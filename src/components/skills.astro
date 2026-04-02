@@ -1,0 +1,72 @@
+---
+// src/components/Skills.astro
+
+// 1. Store the skills and their respective SVG icons in an array
+const skillsData = [
+    {
+        title: "Data Analysis",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>`,
+        skills: ["Python", "SQL", "Excel", "Power BI", "Looker Studio"],
+    },
+    {
+        title: "Data Engineering",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
+        skills: [
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "ETL Pipelines",
+            "Data Modeling",
+        ],
+    },
+    {
+        title: "Web Development (Learning)",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+        skills: ["Astro", "JavaScript", "HTML/CSS", "Tailwind CSS", "Git"],
+    },
+];
+---
+
+<section
+    id="skills"
+    class="py-20 bg-white min-h-screen flex flex-col justify-center-safe"
+>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+                Skills & Expertise
+            </h2>
+            <p class="mt-4 text-lg text-gray-600">
+                Technologies and tools I work with
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-8">
+            {
+                skillsData.map((category) => (
+                    <div class="w-full max-w-sm md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.33rem)] bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 p-8 hover:-translate-y-1 transition-transform duration-300">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6"
+                            set:html={category.icon}
+                        />
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">
+                            {category.title}
+                        </h3>
+
+                        <ul class="space-y-3">
+                            {category.skills.map((skill) => (
+                                <li class="flex items-center gap-3 text-gray-600">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0" />
+                                    <span class="text-sm sm:text-base">
+                                        {skill}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
